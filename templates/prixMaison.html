@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>the House Price</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .container {
+            height: 200px;
+            position: relative;
+            border: 3px solid rgb(245, 250, 245);
+        }
+        
+        .BG {
+            display: block;
+            top: auto;
+            left: auto;
+            width: 3000px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #707070;
+            opacity: 1;
+        }
+        
+        .cp {
+            top: 0xp;
+            left: 0xp;
+            width: 100%;
+            height: 27px;
+            text-align: center;
+            font: normal normal normal 20px/27px Segoe UI;
+            letter-spacing: 0px;
+            color: #000000;
+        }
+        
+        .center {
+            display: flex;
+            align-items: center;
+            height: 50%;
+        }
+        
+        .page2 {
+            margin: 0;
+            position: absolute;
+            top: 290%;
+            left: 85%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background: #11c7bb 0% 0% no-repeat padding-box;
+            border: 4px solid #130202;
+            border-radius: 120px;
+            opacity: 0.44;
+        }
+        
+        .robot {
+            margin: 0;
+            position: absolute;
+            top: 295%;
+            left: 17%;
+            width: 230px;
+            height: 230px;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background: #448782 0% 0% no-repeat padding-box;
+            border: 1px solid #707070;
+            border-radius: 20px;
+            opacity: 1;
+        }
+        
+        .titre {
+            top: 47px;
+            left: 270px;
+            width: 100%;
+            height: 47px;
+            text-align: top;
+            font: normal normal normal 25px/47px Bodoni MT;
+            letter-spacing: 0px;
+            color: #68122C;
+        }
+        
+        input[type=number],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type=text],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 30%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="center">
+
+        <img class="BG" src="{{url_for('static', filename='img.jpg')}}" /> </div>
+
+    </div>
+
+    <div class="center">
+        <h3 class="titre">Fill In The Fields To Know The Price Of Your Own HOUSE </h3>
+    </div>
+    <div>
+        <form method="POST" action="{{url_for('predict')}}">
+            <label for="fname">longitude</label>
+            <input type="number" id="fname" name="longitude" placeholder="fill in..">
+
+            <label for="lname">latitude</label>
+            <input type="number" id="lname" name="latitude" placeholder="fill in..">
+
+
+            <label for="fname">housing_median_age</label>
+            <input type="number" id="fname" name="housing_media_age" placeholder="fill in..">
+
+            <label for="lname">total_rooms</label>
+            <input type="number" id="lname" name="total_rooms" placeholder="fill in..">
+
+
+            <label for="fname">total_bedrooms</label>
+            <input type="number" id="fname" name="total_bedrooms" placeholder="fill in..">
+
+            <label for="lname">population</label>
+            <input type="number" id="lname" name="population" placeholder="fill in..">
+
+
+            <label for="fname">households</label>
+            <input type="number" id="fname" name="households" placeholder="fill in..">
+
+            <label for="lname">median_income</label>
+            <input type="number" id="lname" name="median_income" placeholder="fill in..">
+
+            <label for="lname">ocean_proximity (you have to choose one from the table bellow)</label>
+            <input type="text" id="lname" name="ocean_proximity" placeholder="fill in..">
+
+
+            <button class="button" id="predict" type="submit" value="predict"> predict </button>
+
+        </form>
+        <br>
+        <label for="lname">the House values</label>
+        <p>we predict that the house price will be : {{ prixMaison }} </p>
+
+
+        <button class="page2"><a href="/"> 
+            page précédente</button> </a>
+
+
+
+
+
+
+
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="center">
+        <p class="cp"> copyright © HAJER 2020 </p>
+
+    </div>
+
+
+
+
+    <table class="robot">
+        <tr>
+            <th>ocean_proximity</th>
+
+        </tr>
+        <tr>
+            <td>NEAR BAY</td>
+
+        </tr>
+        <tr>
+            <td> &#139;1H OCEAN </td>
+
+        </tr>
+        <tr>
+            <td>INLAND</td>
+
+        </tr>
+        <tr>
+            <td>NEAR OCEAN</td>
+
+        </tr>
+    </table>
+
+
+
+
+
+</body>
+
+</html>
